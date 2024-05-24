@@ -1,0 +1,66 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import Logo from "../images/caracol-logo.png";
+---
+
+<Layout title="Login">
+    <main>
+        <form action="/api/login" method="POST" class="login">
+            <div class="logo">
+                <Image src={Logo} alt="caracol-logo" height="64" width="64" loading="eager" />
+                <h2>Login / Acceso</h2>
+            </div>
+            <div>
+                <label for="login-user">Usuario</label>
+                <input type="text" name="login-user" id="login-user" autocomplete="off">
+            </div>
+            <div>
+                <label for="login-pass">Contraseña</label>
+                <input type="password" name="login-pass" id="login-pass" autocomplete="off">
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </main>
+</Layout>
+
+<style>
+    main {
+        min-height: 100vh;
+
+        display: flex;
+        place-content: center;
+    }
+
+    form.login {
+        border: 2px solid blue;
+        margin: auto;
+        width: 400px;
+        border-radius: var(--border-radius);
+        padding: 32px;
+        display: grid;
+        gap: 12px;
+    }
+    form.login > div {
+        display: grid;
+    }
+    form.login > div > label {
+        font-size: 12px;
+        font-weight: bolder;
+    }
+    form.login > div.logo {
+        grid-template-columns: auto 1fr;
+        justify-content: center;
+        align-items: center;
+    }
+    form.login > div.logo > * {
+        text-align: center;
+        margin: 0;
+    }
+
+    form.login > button {
+        font-size: 1.25rem;
+        font-weight: bolder;
+    }
+
+</style>
