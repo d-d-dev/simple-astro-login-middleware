@@ -1,66 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
-import Logo from "../images/caracol-logo.png";
 ---
 
 <Layout title="Login">
-    <main>
-        <form action="/api/login" method="POST" class="login">
-            <div class="logo">
-                <Image src={Logo} alt="caracol-logo" height="64" width="64" loading="eager" />
-                <h2>Login / Acceso</h2>
+    <main class="min-h-screen flex items-center">
+        <form class="bg-fg1 text-text-light w-[480px] m-auto rounded-md p-8 grid gap-3"
+            action="/api/login" method="POST">
+            <div class="grid grid-cols-[auto_1fr] items-center justify-center">
+                <img src="logo.png" alt="caracol-logo" height="64" width="64" loading="lazy" />
+                <h2 class="text-2xl text-center font-bold">Login / Acceso</h2>
             </div>
-            <div>
-                <label for="login-user">Usuario</label>
-                <input type="text" name="login-user" id="login-user" autocomplete="off">
+            <div class="grid">
+                <label class="text-xs font-bold" for="login-user">Usuario</label>
+                <input class="bg-fg2 px-2 text-xl" type="text" name="login-user" id="login-user" autocomplete="off">
             </div>
-            <div>
-                <label for="login-pass">Contraseña</label>
-                <input type="password" name="login-pass" id="login-pass" autocomplete="off">
+            <div class="grid">
+                <label class="text-xs font-bold" for="login-pass">Contraseña</label>
+                <input class="bg-fg2 px-2 text-xl" type="password" name="login-pass" id="login-pass" autocomplete="off">
             </div>
-            <button type="submit">Login</button>
+            <button class="text-xl font-bold p-2 bg-accent2" type="submit">Login</button>
         </form>
     </main>
 </Layout>
-
-<style>
-    main {
-        min-height: 100vh;
-
-        display: flex;
-        place-content: center;
-    }
-
-    form.login {
-        border: 2px solid blue;
-        margin: auto;
-        width: 400px;
-        border-radius: var(--border-radius);
-        padding: 32px;
-        display: grid;
-        gap: 12px;
-    }
-    form.login > div {
-        display: grid;
-    }
-    form.login > div > label {
-        font-size: 12px;
-        font-weight: bolder;
-    }
-    form.login > div.logo {
-        grid-template-columns: auto 1fr;
-        justify-content: center;
-        align-items: center;
-    }
-    form.login > div.logo > * {
-        text-align: center;
-        margin: 0;
-    }
-
-    form.login > button {
-        font-size: 1.25rem;
-        font-weight: bolder;
-    }
-
-</style>

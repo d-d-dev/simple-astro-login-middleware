@@ -1,14 +1,36 @@
 ---
+import App from '../components/App.svelte';
 import Layout from '../layouts/Layout.astro';
 
+const params = Object.fromEntries(Astro.url.searchParams.entries());
 ---
 
 <Layout title="Inicio">
-	<main>
+	<main class="min-h-screen border-4 border-blue-500">
 		<h1>Titulo</h1>
 		<p>Acceso Exitoso!</p>
+		<p>Ahora todo tiene tailwind</p>
 		<form action="/api/logout">
-			<button type="submit">Logout</button>
+			<button class="bg-red-500 text-xl font-bold px-4 text-text-light" type="submit">Logout</button>
 		</form>
+
+		<App client:load />
+
+		<form class="border-4 border-red-500 p-4" action="/api/endpoint" method="GET">
+			<h2 class="text-2xl font-bold">Formulario GET</h2>
+			<button class="bg-accent1 text-xl font-bold text-text-light px-4">GET</button>
+		</form>
+
+		<form class="border-4 border-red-500 p-4" action="/api/endpoint" method="POST">
+			<h2 class="text-2xl font-bold">Formulario POST</h2>
+			<input type="text" name="input-data" value="algun-input" readonly>
+			<input type="text" name="formulario-post" value="funciona!" readonly>
+			<button class="bg-accent1 text-xl font-bold text-text-light px-4">POST</button>
+		</form>
+
+		{Object.keys(params).at(0) && 
+			<pre>{JSON.stringify(params, null, 4)}</pre>
+			<a class="text-text-light text-xl font-bold bg-green-500 px-4" href="/">Retornar</a>
+		}
 	</main>
 </Layout>

@@ -24,3 +24,12 @@ export const validarToken = (token:string|undefined):AuthPayload|null => {
         return null;
     }
 };
+
+////3. Chunks
+export const chunkify = <T>(arr:T[], chunk:number) => {
+    const salida:T[][] = [];
+    for (let i=0; i < arr.length; i += chunk) {
+        salida.push(arr.slice(i, i + chunk))
+    }
+    return salida;
+}
