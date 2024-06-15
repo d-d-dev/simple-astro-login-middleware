@@ -6,7 +6,9 @@ Astro es divertido!.
 * Typescript
 * Font-awesome
 * Transiciones
-* CSS global
+* Svelte
+* Tailwind
+* Drizzle-ORM : Mysql
 
 ## Variables de entorno en .env
 Crear un archivo .env incluyendo los siguientes parámetros
